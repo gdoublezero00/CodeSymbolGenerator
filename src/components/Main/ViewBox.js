@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import bwipjs from 'bwip-js'
-import { Columns } from 'react-bulma-components/full'
+import { Columns, Card } from 'react-bulma-components/full'
 
 class ViewBox extends React.Component {
     constructor(props) {
@@ -24,8 +24,14 @@ class ViewBox extends React.Component {
 
     render() {
         return (
-            <Columns.Column>
-                <canvas id="symbol"></canvas>
+            <Columns.Column style={{textAlign: 'center', minWidth: '300px'}}>
+                {this.props.codeString !== "" ?
+                <Card>
+                    <Card.Content>
+                        <canvas id="symbol"></canvas>
+                    </Card.Content>
+                </Card>
+                : null }
             </Columns.Column>
         )
     }

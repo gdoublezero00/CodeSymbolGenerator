@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { Columns, Form } from 'react-bulma-components/full'
+import { Columns, Form, Panel } from 'react-bulma-components/full'
 import { changeSymbolType } from '../../actions/changeSymbolType'
 import { changeCodeString } from '../../actions/changeCodeString'
 
@@ -8,7 +8,7 @@ class InputBox extends React.Component {
     constructor(props) {
         super(props);
         this.state = {};
-
+        this.inputRef = React.createRef()
         this.handleChangeSymbolType = this.handleChangeSymbolType.bind(this)
         this.handleChangeString = this.handleChangeString.bind(this)
 
@@ -46,7 +46,7 @@ class InputBox extends React.Component {
                 <Form.Field>
                     <Form.Label>Symbol Value</Form.Label>
                     <Form.Control>
-                        <Form.Input placeholder="input the symbol value." value={this.props.codeString} onChange={this.handleChangeString}></Form.Input>
+                        <Form.Input ref={this.inputRef} placeholder="input the symbol value." value={this.props.codeString} onChange={this.handleChangeString}></Form.Input>
                     </Form.Control>
                 </Form.Field>
             </Columns.Column>
